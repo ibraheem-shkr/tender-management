@@ -1,0 +1,69 @@
+<h2> Tenders </h2>
+
+<input type="text" (keyup)="onSearchKeyup($event)" placeholder="Search Tenders" />
+
+<table mat-table [dataSource]="dataSource" matSort>
+
+  <!-- Ref# Column -->
+  <ng-container matColumnDef="tenderReferenceNumber">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Ref# </th>
+    <td mat-cell *matCellDef="let tender">
+      {{ tender.tenderReferenceNumber }}
+    </td>
+  </ng-container>
+
+  <!-- Customer Name Column -->
+  <ng-container matColumnDef="customerName">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Customer Name </th>
+    <td mat-cell *matCellDef="let tender">
+      <a [title]="tender.customerName + ' details'" [routerLink]="['/tenders', tender.id]">
+        {{ tender.customerName }}
+      </a>
+    </td>
+  </ng-container>
+
+  <!-- Description Column -->
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Description </th>
+    <td mat-cell *matCellDef="let tender">
+      {{ tender.description }}
+    </td>
+  </ng-container>
+
+  <!-- Issue Date Column -->
+  <ng-container matColumnDef="issueDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Issue Date </th>
+    <td mat-cell *matCellDef="let tender">
+      {{ tender.issueDate | date }}
+    </td>
+  </ng-container>
+
+  <!-- Closing Date Column -->
+  <ng-container matColumnDef="closingDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Closing Date </th>
+    <td mat-cell *matCellDef="let tender">
+      {{ tender.closingDate | date }}
+    </td>
+  </ng-container>
+
+  <!-- Status Column -->
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+    <td mat-cell *matCellDef="let tender">
+      {{ tender.status}}
+    </td>
+  </ng-container>
+
+  <!-- Details Column -->
+  <ng-container matColumnDef="details">
+    <th mat-header-cell *matHeaderCellDef> Details </th>
+    <td mat-cell *matCellDef="let tender">
+      <a [title]="tender.customerName + ' details'" [routerLink]="['/tenders', tender.id]">
+        View Details
+      </a>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,58 @@
+<div class="container">
+  <form [formGroup]="tenderForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="tenderReferenceNumber">Tender Reference Number:</label>
+      <input id="tenderReferenceNumber" formControlName="tenderReferenceNumber" />
+      <div class="validation-msg"
+        *ngIf="tenderForm.get('tenderReferenceNumber')?.invalid && tenderForm.get('tenderReferenceNumber')?.touched">
+        Tender Reference Number is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="customerName">Customer Name:</label>
+      <input id="customerName" formControlName="customerName" />
+      <div class="validation-msg"
+        *ngIf="tenderForm.get('customerName')?.invalid && tenderForm.get('customerName')?.touched">
+        Customer Name is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+      <div class="validation-msg"
+        *ngIf="tenderForm.get('description')?.invalid && tenderForm.get('description')?.touched">
+        Description is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="issueDate">Issue Date:</label>
+      <input type="date" id="issueDate" formControlName="issueDate" />
+      <div class="validation-msg" *ngIf="tenderForm.get('issueDate')?.invalid && tenderForm.get('issueDate')?.touched">
+        Issue Date is required.
+      </div>
+    </div>
+
+    <div>
+      <label for="closingDate">Closing Date:</label>
+      <input type="date" id="closingDate" formControlName="closingDate" />
+      <div class="validation-msg"
+        *ngIf="tenderForm.get('closingDate')?.invalid && tenderForm.get('closingDate')?.touched">
+        Closing Date is required.
+      </div>
+    </div>
+
+    <label for="status">Status:</label>
+    <select formControlName="status" id="status">
+      <option value="Open">Open</option>
+      <option value="Closed">Closed</option>
+      <option value="Awarded">Awarded</option>
+    </select>
+
+    <button type="submit" [disabled]="tenderForm.invalid">Submit</button>
+  </form>
+
+  <div class="validation-msg" *ngIf="successMessage">{{ successMessage }}</div>
+</div>

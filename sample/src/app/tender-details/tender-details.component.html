@@ -1,0 +1,13 @@
+<h2>tender Details</h2>
+
+<div *ngIf="tender">
+  <h3><b>Customer Name: </b>{{ tender.customerName }}</h3>
+  <h4><b>Reference #</b>{{ tender.tenderReferenceNumber }}</h4>
+  <p><b>Description: </b><br>{{ tender.description }}</p>
+  <p><b>Issue / Closing Dates: </b><br>{{ tender.issueDate }}/{{ tender.closingDate }}</p>
+  <p><b>Status: </b><br>{{ tender.status}}</p>
+</div>
+<div *ngIf="!tender">
+  <p>Loading tender details...</p>
+</div>
+<button type="button" (click)="goBack()">Go back</button>

@@ -1,0 +1,9 @@
+.container {
+    padding: 20px;
+}
+
+.validation-msg {
+    color: rgb(151, 60, 60);
+    font-size: .8em;
+    padding-bottom: 10px;
+}
